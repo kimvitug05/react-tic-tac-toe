@@ -3,8 +3,8 @@ import './App.css';
 
 import Board from './components/Board';
 
-const PLAYER_1 = 'X';
-const PLAYER_2 = 'O';
+const PLAYER_1 = 'x';
+const PLAYER_2 = 'o';
 
 const generateSquares = () => {
   const squares = [];
@@ -21,7 +21,7 @@ const generateSquares = () => {
       currentId += 1;
     }
   }
-  console.log(squares);
+  // console.log(squares);
   return squares;
 }
 
@@ -42,7 +42,7 @@ const App = () => {
 
     for (let row = 0; row < 3; row += 1) {
       for (let col = 0; col < 3; col += 1) {
-        if (updatedSquares[row][col].id === id && updatedSquares[row][col].value === '') {
+        if (updatedSquares[row][col].id === id && updatedSquares[row][col].value === '' && !winner) {
           updatedSquares[row][col] = { ...updatedSquares[row][col], value: currentPlayer };
         } 
       }
@@ -95,11 +95,11 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>The winner is { winner } </h2>
+        <h2>{ winner ? `Winner is ${winner}` : `Current Player ${currentPlayer}` }</h2>
         <button onClick={ resetGame }>Reset Game</button>
       </header>
       <main>
-        <Board squares={squares} onClickCallback={ onClickCallback } />
+        <Board squares={squares} onClickCallback={ () => onClickCallback } />
       </main>
     </div>
   );

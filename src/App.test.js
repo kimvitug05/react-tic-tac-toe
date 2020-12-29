@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
@@ -14,7 +15,7 @@ describe('App', () => {
     expect(buttons[buttonIndex].innerHTML).toEqual(expectedResult);
   }
 
-  describe.skip('Wave 2: clicking on squares and rendering App', () => {
+  describe('Wave 2: clicking on squares and rendering App', () => {
 
   test('App renders with a board of 9 empty buttons', () => {
     // Arrange-Act - Render the app
@@ -364,7 +365,7 @@ describe('App', () => {
     });       
   });
 
-  describe.skip('Wave 4:  reset game button', () => {
+  describe('Wave 4:  reset game button', () => {
     test('App has a "Reset Game" button', () => {
       // Arrange-Act
       render(<App />);
