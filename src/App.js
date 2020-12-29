@@ -37,17 +37,17 @@ const App = () => {
   //   When it is clicked on.
   //   Then pass it into the squares as a callback
   const onClickCallback = (id) => {
-    const updatedSquares = [ ...squares ];
+    const updatedSquares = [ [...squares[0]], [...squares[1]], [...squares[2]] ];
 
     for (let row = 0; row < 3; row += 1) {
       for (let col = 0; col < 3; col += 1) {
         if (updatedSquares[row][col].id === id && updatedSquares[row][col].value === '') {
-          updatedSquares[row][col].value = currentPlayer;
-          setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
-        }
+          updatedSquares[row][col] = { ...updatedSquares[row][col], value: currentPlayer };
+        } 
       }
     }
 
+    setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
     setSquares(updatedSquares);
   }
 
